@@ -32,11 +32,19 @@ function createRock(x) {
   rock.style.top = top
   GAME.appendChild(rock)
   function moveRock() {
+<<<<<<< HEAD
     rock.style.top = `${top += 2}px`
     if (checkCollision(rock)) {
       return endGame()
     } if(top < GAME_HEIGHT) {
       window.requestAnimationFrame(moveRock)
+=======
+    checkCollision(rock)
+    if (true) {
+      endGame()
+    } else if(top < 360) {
+      top += 2
+>>>>>>> cdcbb5fc27fee0ff000f59009ae826b01e7a55a9
     } else {
       rock.remove()
     }
@@ -47,7 +55,11 @@ function createRock(x) {
 
 function endGame() {
   clearInterval(gameInterval)
+<<<<<<< HEAD
   ROCKS.forEach(function(rock) {rock.remove()})
+=======
+  GAME.remove(ROCKS)
+>>>>>>> cdcbb5fc27fee0ff000f59009ae826b01e7a55a9
   window.removeEventListener('keydown', moveDodger)
   START.innerHTML = 'Play again?'
   START.style.display = 'inline'
@@ -55,6 +67,7 @@ function endGame() {
  }
 
 function moveDodger(e) {
+<<<<<<< HEAD
   if ([RIGHT_ARROW, LEFT_ARROW].indexOf(e.which) > -1) {
     e.preventDefault()
     e.stopPropagation()
@@ -71,6 +84,30 @@ function moveDodgerLeft() {
     if (left > 0) {
       DODGER.style.left = `${left - 4}px`
     }})
+=======
+  e.preventDefault()
+  e.stopPropagation()
+  document.addEventListener('keydown', function(e) {
+    if (e.which === RIGHT_ARROW) {
+      moveDodgerRight()
+    } if (e.which === LEFT_ARROW) {
+      moveDodgerLeft()
+    }
+  })
+}
+
+function moveDodgerLeft() {
+  var leftNumbers = DODGER.style.left.replace('px','')
+  var left = parseInt(leftNumbers, 10)
+  if (left > 0) {
+    DODGER.style.left = `${left - 4}px`
+  }
+  // function l() {
+  //   DODGER.style.left = `${left - 4}px`
+  //   if (left > 0) {
+  //     window.requestAnimationFrame(l)
+  //   }} window.requestAnimationFrame(l)
+>>>>>>> cdcbb5fc27fee0ff000f59009ae826b01e7a55a9
 }
 
 function moveDodgerRight() {
